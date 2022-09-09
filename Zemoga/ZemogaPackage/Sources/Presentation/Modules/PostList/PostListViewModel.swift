@@ -5,16 +5,16 @@ import Combine
 
 final class PostListViewModel {
     
-    let navigationController: UINavigationController
     private let fetchPostListUseCase: FetchPostsListUseCase
+    private let nextFeature: SingleParamFeatureProvider<Int>
     
     private var cancellables = Set<AnyCancellable>()
     @Published private(set) var posts: [Post] = []
     
-    init(navigationController: UINavigationController,
-         fetchPostListUseCase: FetchPostsListUseCase) {
-        self.navigationController = navigationController
+    init(fetchPostListUseCase: FetchPostsListUseCase,
+         nextFeature: @escaping SingleParamFeatureProvider<Int>) {
         self.fetchPostListUseCase = fetchPostListUseCase
+        self.nextFeature = nextFeature
     }
     
     func fetchPosts() {
@@ -31,5 +31,10 @@ final class PostListViewModel {
                 self?.posts = items
             })
             .store(in: &cancellables)
+    }
+    
+    func goToDetailPost(navigationController: UINavigationController, idPost: Int) {
+        let viewController = nextFeature(navigationController, idPost)
+        navigationController.pushViewController(viewController, animated: true)
     }
 }

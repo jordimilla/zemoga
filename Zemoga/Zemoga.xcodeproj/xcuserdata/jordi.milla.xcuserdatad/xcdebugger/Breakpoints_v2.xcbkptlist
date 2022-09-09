@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2DDE4EAA-C292-490A-BE17-A94934A12153"
+            uuid = "A7FACB5B-90F9-4077-A3AB-2F1FAE148B2E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/Cell/PostTableViewCell.swift"
+            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "setup(title:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "goToDetailPost(navigationController:idPost:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -4,13 +4,13 @@ import UIKit
 
 public class PostListAssembly {
     
-    private let navigationController: UINavigationController
     private let fetchPostListUseCase: FetchPostsListUseCase
+    private let nextFeature: SingleParamFeatureProvider<Int>
     
-    public init(navigationController: UINavigationController,
-                fetchPostListUseCase: FetchPostsListUseCase) {
-        self.navigationController = navigationController
+    public init(fetchPostListUseCase: FetchPostsListUseCase,
+                nextFeature: @escaping SingleParamFeatureProvider<Int>) {
         self.fetchPostListUseCase = fetchPostListUseCase
+        self.nextFeature = nextFeature
     }
     
     public func build() -> UIViewController {
@@ -21,7 +21,7 @@ public class PostListAssembly {
 extension PostListAssembly {
     
     private func makeViewModel() -> PostListViewModel {
-        PostListViewModel(navigationController: navigationController,
-                          fetchPostListUseCase: fetchPostListUseCase)
+        PostListViewModel(fetchPostListUseCase: fetchPostListUseCase,
+                          nextFeature: nextFeature)
     }
 }

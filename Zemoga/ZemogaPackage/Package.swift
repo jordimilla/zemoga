@@ -30,7 +30,10 @@ let package = Package(
                    ),
         
         .target(name: "Presentation",
-                dependencies: ["Domain"]
+                dependencies: ["Domain"],
+                resources: [
+                              .process("Resources")
+                             ]
                ),
         .testTarget(name: "PresentationTest", dependencies: ["Presentation"]),
     ]

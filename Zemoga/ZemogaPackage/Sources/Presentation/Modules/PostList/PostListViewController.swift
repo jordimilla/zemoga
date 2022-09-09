@@ -63,7 +63,11 @@ extension PostListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension PostListViewController: UITableViewDelegate {
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post:Post = viewModel.posts[indexPath.row]
+        guard let navigationController = self.navigationController else { return }
+        viewModel.goToDetailPost(navigationController: navigationController, idPost: post.id)
+    }
 }
 
 // MARK: - CustomViewController
