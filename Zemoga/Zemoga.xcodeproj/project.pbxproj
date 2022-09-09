@@ -49,6 +49,7 @@
 		9A5AF0F228CB8E77009EF7E3 /* ZemogaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZemogaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5AF0F628CB8E77009EF7E3 /* ZemogaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITests.swift; sourceTree = "<group>"; };
 		9A5AF0F828CB8E77009EF7E3 /* ZemogaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZemogaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9A5AF10528CB8F4E009EF7E3 /* ZemogaPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ZemogaPackage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 		9A5AF0C628CB8E75009EF7E3 = {
 			isa = PBXGroup;
 			children = (
+				9A5AF10528CB8F4E009EF7E3 /* ZemogaPackage */,
 				9A5AF0D128CB8E75009EF7E3 /* Zemoga */,
 				9A5AF0EB28CB8E77009EF7E3 /* ZemogaTests */,
 				9A5AF0F528CB8E77009EF7E3 /* ZemogaUITests */,
