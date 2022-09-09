@@ -14,11 +14,7 @@ public struct ServiceRepositoryImpl: ServiceRepository {
         serviceDataSource.fetchPostsList()
     }
     
-    public func getDetailPost(id: Int) -> AnyPublisher<Post, Error> {
+    public func getDetailPost(id: Int) -> AnyPublisher<[Comment], Error> {
         serviceDataSource.getDetailPost(id: id)
-    }
-    
-    public func getComments(id: Int) -> AnyPublisher<[Comment], Error> {
-        serviceDataSource.getComments(id: id)
     }
 }

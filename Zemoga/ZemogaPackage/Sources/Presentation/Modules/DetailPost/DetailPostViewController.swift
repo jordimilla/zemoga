@@ -22,7 +22,7 @@ class DetailPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.getDetailPost(id: viewModel.idPost)
     }
     
     private func setupBindings() {
