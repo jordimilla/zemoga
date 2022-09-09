@@ -55,16 +55,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BF36929F-548A-4D86-A0BA-493D1239AC1B"
+            uuid = "ADE8FBC3-8EBB-4985-B5CC-939BC81CB54F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Data/DataSources/ServiceDataSource.swift"
+            filePath = "ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "getDetailPost(id:)"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

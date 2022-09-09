@@ -9,7 +9,7 @@ final class DetailPostViewModel {
     let idPost: Int
     private let getDetailPostUseCase: GetDetailPostUseCase
     private var cancellables = Set<AnyCancellable>()
-
+    @Published private(set) var comments: [Comment] = []
     
     init(navigationController: UINavigationController,
          idPost: Int,
@@ -30,7 +30,7 @@ final class DetailPostViewModel {
                     break
                 }
             }, receiveValue: { [weak self] items in
-   
+                self?.comments = items
             })
             .store(in: &cancellables)
     }

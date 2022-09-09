@@ -1,9 +1,9 @@
 import Foundation
 
 public struct Comment: Codable {
-    let postId: Int
-    let id: Int
-    let name: String
-    let email: String
-    let body: String
+    public let postId: Int
+    public let id: Int
+    public let name: String
+    public let email: String
+    public let body: String
 }
