@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		9A5AF0D328CB8E75009EF7E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D228CB8E75009EF7E3 /* AppDelegate.swift */; };
 		9A5AF0D528CB8E75009EF7E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D428CB8E75009EF7E3 /* SceneDelegate.swift */; };
-		9A5AF0D728CB8E75009EF7E3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D628CB8E75009EF7E3 /* MainViewController.swift */; };
+		9A5AF0D728CB8E75009EF7E3 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D628CB8E75009EF7E3 /* AppAssembly.swift */; };
 		9A5AF0DD28CB8E75009EF7E3 /* Zemoga.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0DB28CB8E75009EF7E3 /* Zemoga.xcdatamodeld */; };
 		9A5AF0DF28CB8E76009EF7E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AF0DE28CB8E76009EF7E3 /* Assets.xcassets */; };
 		9A5AF0E228CB8E76009EF7E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A5AF0E028CB8E76009EF7E3 /* LaunchScreen.storyboard */; };
 		9A5AF0ED28CB8E77009EF7E3 /* ZemogaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0EC28CB8E77009EF7E3 /* ZemogaTests.swift */; };
 		9A5AF0F728CB8E77009EF7E3 /* ZemogaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0F628CB8E77009EF7E3 /* ZemogaUITests.swift */; };
 		9A5AF0F928CB8E77009EF7E3 /* ZemogaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0F828CB8E77009EF7E3 /* ZemogaUITestsLaunchTests.swift */; };
+		9A5AF10828CBA38A009EF7E3 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 9A5AF10728CBA38A009EF7E3 /* Data */; };
+		9A5AF10A28CBA38A009EF7E3 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 9A5AF10928CBA38A009EF7E3 /* Domain */; };
+		9A5AF10C28CBA38A009EF7E3 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 9A5AF10B28CBA38A009EF7E3 /* Presentation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +42,7 @@
 		9A5AF0CF28CB8E75009EF7E3 /* Zemoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zemoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5AF0D228CB8E75009EF7E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A5AF0D428CB8E75009EF7E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9A5AF0D628CB8E75009EF7E3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9A5AF0D628CB8E75009EF7E3 /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
 		9A5AF0DC28CB8E75009EF7E3 /* Zemoga.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zemoga.xcdatamodel; sourceTree = "<group>"; };
 		9A5AF0DE28CB8E76009EF7E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A5AF0E128CB8E76009EF7E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A5AF10A28CBA38A009EF7E3 /* Domain in Frameworks */,
+				9A5AF10C28CBA38A009EF7E3 /* Presentation in Frameworks */,
+				9A5AF10828CBA38A009EF7E3 /* Data in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +91,7 @@
 				9A5AF0EB28CB8E77009EF7E3 /* ZemogaTests */,
 				9A5AF0F528CB8E77009EF7E3 /* ZemogaUITests */,
 				9A5AF0D028CB8E75009EF7E3 /* Products */,
+				9A5AF10628CBA38A009EF7E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,7 +110,7 @@
 			children = (
 				9A5AF0D228CB8E75009EF7E3 /* AppDelegate.swift */,
 				9A5AF0D428CB8E75009EF7E3 /* SceneDelegate.swift */,
-				9A5AF0D628CB8E75009EF7E3 /* MainViewController.swift */,
+				9A5AF0D628CB8E75009EF7E3 /* AppAssembly.swift */,
 				9A5AF0DE28CB8E76009EF7E3 /* Assets.xcassets */,
 				9A5AF0E028CB8E76009EF7E3 /* LaunchScreen.storyboard */,
 				9A5AF0E328CB8E76009EF7E3 /* Info.plist */,
@@ -129,6 +136,13 @@
 			path = ZemogaUITests;
 			sourceTree = "<group>";
 		};
+		9A5AF10628CBA38A009EF7E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +159,11 @@
 			dependencies = (
 			);
 			name = Zemoga;
+			packageProductDependencies = (
+				9A5AF10728CBA38A009EF7E3 /* Data */,
+				9A5AF10928CBA38A009EF7E3 /* Domain */,
+				9A5AF10B28CBA38A009EF7E3 /* Presentation */,
+			);
 			productName = Zemoga;
 			productReference = 9A5AF0CF28CB8E75009EF7E3 /* Zemoga.app */;
 			productType = "com.apple.product-type.application";
@@ -259,7 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A5AF0D728CB8E75009EF7E3 /* MainViewController.swift in Sources */,
+				9A5AF0D728CB8E75009EF7E3 /* AppAssembly.swift in Sources */,
 				9A5AF0D328CB8E75009EF7E3 /* AppDelegate.swift in Sources */,
 				9A5AF0DD28CB8E75009EF7E3 /* Zemoga.xcdatamodeld in Sources */,
 				9A5AF0D528CB8E75009EF7E3 /* SceneDelegate.swift in Sources */,
@@ -448,7 +467,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -474,7 +493,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -590,6 +609,21 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9A5AF10728CBA38A009EF7E3 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		9A5AF10928CBA38A009EF7E3 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		9A5AF10B28CBA38A009EF7E3 /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		9A5AF0DB28CB8E75009EF7E3 /* Zemoga.xcdatamodeld */ = {
