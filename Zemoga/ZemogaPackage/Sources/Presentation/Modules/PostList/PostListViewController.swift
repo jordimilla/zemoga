@@ -5,8 +5,16 @@ import Combine
 
 class PostListViewController: UIViewController {
     
+    // MARK: - Properties
     var viewModel: PostListViewModel
     private var cancellables: Set<AnyCancellable> = []
+    
+    let tableView: UITableView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        return $0
+    }(UITableView())
+    
+    // MARK: - Inits
     
     public init(viewModel: PostListViewModel) {
         self.viewModel = viewModel
@@ -19,21 +27,63 @@ class PostListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        setupViews()
+        setupConstraints()
         setupBindings()
         viewModel.fetchPosts()
-    }
-    
-    private func setupUI() {
-        view.backgroundColor = .white
     }
     
     private func setupBindings() {
         viewModel.$posts
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                print(self?.viewModel.posts)
+                self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension PostListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.posts.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.indentifier, for: indexPath) as? PostTableViewCell else {
+            return UITableViewCell()
+        }
+        let post:Post = viewModel.posts[indexPath.row]
+        cell.setup(title: post.title)
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension PostListViewController: UITableViewDelegate {
+
+}
+
+// MARK: - CustomViewController
+
+extension PostListViewController {
+    public func setupViews() {
+        title = "Posts"
+        view.backgroundColor = .white
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.indentifier)
+    }
+
+    public func setupConstraints() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
+
+        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
+                         left: view.safeAreaLayoutGuide.leftAnchor,
+                         bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                         right: view.safeAreaLayoutGuide.rightAnchor)
     }
 }
