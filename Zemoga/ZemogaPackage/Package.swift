@@ -32,8 +32,8 @@ let package = Package(
         .target(name: "Presentation",
                 dependencies: ["Domain"],
                 resources: [
-                              .process("Resources")
-                             ]
+                    .process("Resources")
+                  ]
                ),
         .testTarget(name: "PresentationTest", dependencies: ["Presentation"]),
     ]

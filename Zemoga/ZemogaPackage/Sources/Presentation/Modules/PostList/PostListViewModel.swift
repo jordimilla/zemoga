@@ -29,6 +29,7 @@ final class PostListViewModel {
                 }
             }, receiveValue: { [weak self] items in
                 self?.posts = items
+                self?.savePosts(posts: items)
             })
             .store(in: &cancellables)
     }
@@ -37,4 +38,30 @@ final class PostListViewModel {
         let viewController = nextFeature(navigationController, idPost)
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func savePosts(posts: [Post]) {
+        self.posts = posts
+        UserDefaults.standard.set(try? PropertyListEncoder().encode(self.posts), forKey:"posts")
+    }
+    
+    func hasDB() -> Bool {
+        return UserDefaults.standard.object(forKey: "posts") != nil
+    }
+    
+    func getPosts(){
+        if let data = UserDefaults.standard.value(forKey:"posts") as? Data {
+            guard let decodedSports = try? PropertyListDecoder().decode([Post].self, from: data) else { return }
+            self.posts = decodedSports
+        }
+    }
+    
+    func removePosts() {
+        UserDefaults.standard.removeObject(forKey: "posts")
+    }
+    
+    func deletePost(index: Int) {
+        self.posts.remove(at: index)
+        savePosts(posts: self.posts)
+    }
 }
+

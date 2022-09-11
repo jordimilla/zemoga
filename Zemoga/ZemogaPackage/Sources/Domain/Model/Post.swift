@@ -5,5 +5,6 @@ public struct Post: Codable {
     public let id: Int
     public let title: String
     public let body: String
+    public var hasFavorite: Bool? = false
 }
 

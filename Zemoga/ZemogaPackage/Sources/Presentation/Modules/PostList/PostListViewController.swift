@@ -7,6 +7,7 @@ class PostListViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel: PostListViewModel
+    var posts: [Post] = []
     private var cancellables: Set<AnyCancellable> = []
     
     let tableView: UITableView = {
@@ -30,16 +31,28 @@ class PostListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupBindings()
-        viewModel.fetchPosts()
+        if !viewModel.hasDB() {
+            viewModel.fetchPosts()
+        } else {
+            viewModel.getPosts()
+        }
+    
     }
     
     private func setupBindings() {
         viewModel.$posts
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] _ in
+            .sink { [weak self] items in
+                self?.posts = items
+                self?.filterList()
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+    }
+    
+    func filterList() {
+        self.posts.sort { $0.hasFavorite ?? true && !($1.hasFavorite ?? false) }
+        tableView.reloadData()
     }
 }
 
@@ -47,15 +60,19 @@ class PostListViewController: UIViewController {
 
 extension PostListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.posts.count
+        return posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.indentifier, for: indexPath) as? PostTableViewCell else {
             return UITableViewCell()
         }
-        let post:Post = viewModel.posts[indexPath.row]
-        cell.setup(title: post.title)
+        let post:Post = posts[indexPath.row]
+        cell.setup(title: post.title, hasFavorite: post.hasFavorite ?? false)
+        cell.setCallback(callback: {[unowned self] (boolValue:Bool) in
+            self.posts[indexPath.row].hasFavorite = boolValue
+            viewModel.savePosts(posts: self.posts)
+        })
         return cell
     }
 }
@@ -64,7 +81,7 @@ extension PostListViewController: UITableViewDataSource {
 
 extension PostListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let post:Post = viewModel.posts[indexPath.row]
+        let post:Post = posts[indexPath.row]
         guard let navigationController = self.navigationController else { return }
         viewModel.goToDetailPost(navigationController: navigationController, idPost: post.id)
     }
@@ -78,7 +95,13 @@ extension PostListViewController {
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsMultipleSelectionDuringEditing = false
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.indentifier)
+        
+        let add = UIBarButtonItem(title: "API", style: .plain, target: self, action: #selector(apiTapped))
+        let play = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(removeTapped))
+
+        navigationItem.rightBarButtonItems = [add, play]
     }
 
     public func setupConstraints() {
@@ -89,5 +112,24 @@ extension PostListViewController {
                          left: view.safeAreaLayoutGuide.leftAnchor,
                          bottom: view.safeAreaLayoutGuide.bottomAnchor,
                          right: view.safeAreaLayoutGuide.rightAnchor)
+    }
+    
+    @objc private func removeTapped() {
+        let newArray = self.posts.filter({ $0.hasFavorite == true })
+        viewModel.savePosts(posts: newArray)
+    }
+    
+    @objc private func apiTapped() {
+        viewModel.fetchPosts()
+    }
+}
+extension Array where Element: Equatable {
+    @discardableResult
+    public mutating func replace(_ element: Element, with new: Element) -> Bool {
+        if let f = self.firstIndex(where: { $0 == element}) {
+            self[f] = new
+            return true
+        }
+        return false
     }
 }
