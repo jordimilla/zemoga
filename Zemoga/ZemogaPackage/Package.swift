@@ -8,9 +8,8 @@ let package = Package(
     platforms: [.iOS(.v15)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(name: "Domain", targets: ["Domain"]),
-        .library(name: "Data", targets: ["Data"]),
-        .library(name: "Presentation", targets: ["Presentation"]),
+        .library(name:"ZemogaLayer",
+                 targets: ["Domain", "Data", "Presentation"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.

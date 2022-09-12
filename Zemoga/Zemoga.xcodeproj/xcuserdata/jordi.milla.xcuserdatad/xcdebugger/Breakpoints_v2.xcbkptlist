@@ -82,6 +82,38 @@
             endingLineNumber = "15"
             landmarkName = "deleteAllPost()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B592E3B7-B1F8-4AA2-B58C-C82EF5C3A358 - 7a26e7ce53025e1b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Data.CoreDataRepositoryImpl.deleteAllPost() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Data/Repository/CoreDataRepositoryImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "B592E3B7-B1F8-4AA2-B58C-C82EF5C3A358 - e34d4e7f613af490"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Data.CoreDataRepositoryImpl.deleteAllPost() -&gt; ()"
+                  moduleName = "DataTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Data/Repository/CoreDataRepositoryImpl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "59">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,6 +130,38 @@
             endingLineNumber = "124"
             landmarkName = "deletePost(post:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "65C6CCBF-6F2F-4556-A72A-EF19D376CE3E - 22304149d21fac56"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Presentation.PostListViewModel.deletePost(post: Domain.Post) -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "55">
+               </Location>
+               <Location
+                  uuid = "65C6CCBF-6F2F-4556-A72A-EF19D376CE3E - 1bf7e0a3ef7a53"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Presentation.PostListViewModel.deletePost(post: Domain.Post) -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "124"
+                  endingLineNumber = "124"
+                  offsetFromSymbolStart = "55">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -114,6 +178,38 @@
             endingLineNumber = "87"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6449EB42-43D2-4192-81EC-E832C81FCBE7 - 6717e3132ab4d611"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in Presentation.PostListViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  uuid = "6449EB42-43D2-4192-81EC-E832C81FCBE7 - 453c55ba5b440014"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in Presentation.PostListViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "42">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -130,6 +226,38 @@
             endingLineNumber = "59"
             landmarkName = "fetchCommentsFromStored()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6666E0B2-E7D8-4430-9B98-FB73763D8D3C - 638af6ee7567d0cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Domain.CommentDB&gt;) -&gt; () in Presentation.DetailPostViewModel.fetchCommentsFromStored() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "136">
+               </Location>
+               <Location
+                  uuid = "6666E0B2-E7D8-4430-9B98-FB73763D8D3C - 41a14047049706c8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Domain.CommentDB&gt;) -&gt; () in Presentation.DetailPostViewModel.fetchCommentsFromStored() -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "136">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -146,6 +274,38 @@
             endingLineNumber = "62"
             landmarkName = "fetchCommentsFromStored()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "12B9B2C6-FCC4-4130-B374-58D6B7F63CE3 - 638af6ee7567d0a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Domain.CommentDB&gt;) -&gt; () in Presentation.DetailPostViewModel.fetchCommentsFromStored() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "286">
+               </Location>
+               <Location
+                  uuid = "12B9B2C6-FCC4-4130-B374-58D6B7F63CE3 - 41a14047049706ad"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Domain.CommentDB&gt;) -&gt; () in Presentation.DetailPostViewModel.fetchCommentsFromStored() -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "286">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -162,6 +322,38 @@
             endingLineNumber = "44"
             landmarkName = "getDetailPost()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7783AA95-C7DC-44F1-B750-C0B4B16893C8 - 3ebb895c6858c787"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Domain.Comment&gt;) -&gt; () in Presentation.DetailPostViewModel.getDetailPost() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "7783AA95-C7DC-44F1-B750-C0B4B16893C8 - 1c903ff519a81182"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Array&lt;Domain.Comment&gt;) -&gt; () in Presentation.DetailPostViewModel.getDetailPost() -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -178,6 +370,38 @@
             endingLineNumber = "62"
             landmarkName = "fetchPosts()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "631DB958-6A4E-4CDF-91AC-6577A759CC14 - 55e4e19a6221cd0a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in Presentation.PostListViewModel.fetchPosts() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "127">
+               </Location>
+               <Location
+                  uuid = "631DB958-6A4E-4CDF-91AC-6577A759CC14 - 77cf573313d11b0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in Presentation.PostListViewModel.fetchPosts() -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "127">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -194,6 +418,38 @@
             endingLineNumber = "40"
             landmarkName = "getDetailPost()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2B76A20E-074E-4F21-BC6A-13A777489A0A - afd4550627083691"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in Presentation.DetailPostViewModel.getDetailPost() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "450">
+               </Location>
+               <Location
+                  uuid = "2B76A20E-074E-4F21-BC6A-13A777489A0A - 8dffe3af56f8e094"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in Presentation.DetailPostViewModel.getDetailPost() -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "450">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -209,6 +465,102 @@
             startingLineNumber = "37"
             endingLineNumber = "37"
             landmarkName = "getDetailPost()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B22B566B-6CA8-404F-818C-21D36847C999 - afd455062708357c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in Presentation.DetailPostViewModel.getDetailPost() -&gt; ()"
+                  moduleName = "Zemoga"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "101">
+               </Location>
+               <Location
+                  uuid = "B22B566B-6CA8-404F-818C-21D36847C999 - 8dffe3af56f8e379"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Combine.Subscribers.Completion&lt;Swift.Error&gt;) -&gt; () in Presentation.DetailPostViewModel.getDetailPost() -&gt; ()"
+                  moduleName = "PresentationTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "101">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8018639B-24B4-4D58-998A-5256574233F8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZemogaPackage/Tests/DomainTest/UsesCases/CoreDataUsesCasesTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "test_deletePostDBUseCase()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8018639B-24B4-4D58-998A-5256574233F8 - af2e9e80521c3642"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.NSBatchDeleteResult) -&gt; () in DomainTest.CoreDataUsesCasesTest.test_deletePostDBUseCase() -&gt; ()"
+                  moduleName = "DomainTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Tests/DomainTest/UsesCases/CoreDataUsesCasesTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  uuid = "8018639B-24B4-4D58-998A-5256574233F8 - af2e9e80521c3623"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__C.NSBatchDeleteResult) -&gt; () in DomainTest.CoreDataUsesCasesTest.test_deletePostDBUseCase() -&gt; ()"
+                  moduleName = "DomainTest"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jordi.milla/zemoga/Zemoga/ZemogaPackage/Tests/DomainTest/UsesCases/CoreDataUsesCasesTest.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1957D3FC-9DCE-4727-91B6-356FCB5AA059"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZemogaPackage/Tests/PresentationTest/DetailPostViewModelTest.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "test_getComments()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
