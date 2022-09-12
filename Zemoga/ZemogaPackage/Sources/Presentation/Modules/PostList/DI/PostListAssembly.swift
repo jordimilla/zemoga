@@ -12,8 +12,9 @@ public class PostListAssembly {
     private let deleteAllPostDBUseCase: DeleteAllPostDBUseCase
     private let deleteAllCommentDBUseCase: DeleteAllCommentDBUseCase
     private let deleteAllPostHasNotFavoriteUseCase: DeleteAllPostHasNotFavoriteUseCase
+    private let deletePostDBUseCase: DeletePostDBUseCase
+    
     private let nextFeature: SingleParamFeatureProvider<Post>
-    private let coreDataStore: CoreDataStoring
     
     public init(fetchPostListUseCase: FetchPostsListUseCase,
                 getPostDBUseCase: GetPostDBUseCase,
@@ -23,8 +24,8 @@ public class PostListAssembly {
                 deleteAllPostDBUseCase: DeleteAllPostDBUseCase,
                 deleteAllCommentDBUseCase: DeleteAllCommentDBUseCase,
                 deleteAllPostHasNotFavoriteUseCase: DeleteAllPostHasNotFavoriteUseCase,
-                nextFeature: @escaping SingleParamFeatureProvider<Post>,
-                coreDataStore: CoreDataStoring) {
+                deletePostDBUseCase: DeletePostDBUseCase,
+                nextFeature: @escaping SingleParamFeatureProvider<Post>) {
         self.fetchPostListUseCase = fetchPostListUseCase
         self.getPostDBUseCase = getPostDBUseCase
         self.updateFavoritePostUseCase = updateFavoritePostUseCase
@@ -33,8 +34,8 @@ public class PostListAssembly {
         self.deleteAllPostDBUseCase = deleteAllPostDBUseCase
         self.deleteAllPostHasNotFavoriteUseCase = deleteAllPostHasNotFavoriteUseCase
         self.deleteAllCommentDBUseCase = deleteAllCommentDBUseCase
+        self.deletePostDBUseCase = deletePostDBUseCase
         self.nextFeature = nextFeature
-        self.coreDataStore = coreDataStore
     }
     
     public func build() -> UIViewController {
@@ -53,7 +54,7 @@ extension PostListAssembly {
                           deleteAllPostDBUseCase: deleteAllPostDBUseCase,
                           deleteAllPostHasNotFavoriteUseCase: deleteAllPostHasNotFavoriteUseCase,
                           deleteAllCommentDBUseCase: deleteAllCommentDBUseCase,
-                          nextFeature: nextFeature,
-                          coreDataStore: coreDataStore)
+                          deletePostDBUseCase: deletePostDBUseCase,
+                          nextFeature: nextFeature)
     }
 }

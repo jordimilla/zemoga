@@ -7,16 +7,19 @@ public class DetailPostAssembly {
     private let navigationController: UINavigationController
     private let post: Post
     private let getDetailPostUseCase: GetDetailPostUseCase
-    private let coreDataStore: CoreDataStoring
+    private let fetchCommentsFromStoredUseCase: FetchCommentsFromStoredUseCase
+    private let createCommentDBEntitiesUseCase: CreateCommentDBEntitiesUseCase
     
     public init(navigationController: UINavigationController,
                 post: Post,
                 getDetailPostUseCase: GetDetailPostUseCase,
-                coreDataStore: CoreDataStoring) {
+                fetchCommentsFromStoredUseCase: FetchCommentsFromStoredUseCase,
+                createCommentDBEntitiesUseCase: CreateCommentDBEntitiesUseCase) {
         self.navigationController = navigationController
         self.post = post
         self.getDetailPostUseCase = getDetailPostUseCase
-        self.coreDataStore = coreDataStore
+        self.fetchCommentsFromStoredUseCase = fetchCommentsFromStoredUseCase
+        self.createCommentDBEntitiesUseCase = createCommentDBEntitiesUseCase
     }
     
     public func build() -> UIViewController {
@@ -27,10 +30,11 @@ public class DetailPostAssembly {
 extension DetailPostAssembly {
     
     private func makeViewModel() -> DetailPostViewModel {
-       DetailPostViewModel(navigationController: navigationController,
-                           post: post,
-                           getDetailPostUseCase: getDetailPostUseCase,
-                           coreDataStore: coreDataStore)
+        DetailPostViewModel(navigationController: navigationController,
+                            post: post,
+                            getDetailPostUseCase: getDetailPostUseCase,
+                            fetchCommentsFromStoredUseCase: fetchCommentsFromStoredUseCase,
+                            createCommentDBEntitiesUseCase: createCommentDBEntitiesUseCase)
     }
 }
 

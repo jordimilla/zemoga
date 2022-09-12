@@ -14,11 +14,13 @@ final class PostListViewModel {
     private let deleteAllPostDBUseCase: DeleteAllPostDBUseCase
     private let deleteAllPostHasNotFavoriteUseCase: DeleteAllPostHasNotFavoriteUseCase
     private let deleteAllCommentDBUseCase: DeleteAllCommentDBUseCase
+    private let deletePostDBUseCase: DeletePostDBUseCase
     private let nextFeature: SingleParamFeatureProvider<Post>
-    private let coreDataStore: CoreDataStoring
     
     private var cancellables = Set<AnyCancellable>()
+    
     @Published private(set) var posts: [Post] = []
+    @Published private(set) var alert: Bool = false
     
     init(fetchPostListUseCase: FetchPostsListUseCase,
          getPostDBUseCase: GetPostDBUseCase,
@@ -28,8 +30,8 @@ final class PostListViewModel {
          deleteAllPostDBUseCase: DeleteAllPostDBUseCase,
          deleteAllPostHasNotFavoriteUseCase: DeleteAllPostHasNotFavoriteUseCase,
          deleteAllCommentDBUseCase: DeleteAllCommentDBUseCase,
-         nextFeature: @escaping SingleParamFeatureProvider<Post>,
-         coreDataStore: CoreDataStoring) {
+         deletePostDBUseCase: DeletePostDBUseCase,
+         nextFeature: @escaping SingleParamFeatureProvider<Post>) {
         self.fetchPostListUseCase = fetchPostListUseCase
         self.getPostDBUseCase = getPostDBUseCase
         self.updateFavoritePostUseCase = updateFavoritePostUseCase
@@ -38,8 +40,8 @@ final class PostListViewModel {
         self.deleteAllPostDBUseCase = deleteAllPostDBUseCase
         self.deleteAllPostHasNotFavoriteUseCase = deleteAllPostHasNotFavoriteUseCase
         self.deleteAllCommentDBUseCase = deleteAllCommentDBUseCase
+        self.deletePostDBUseCase = deletePostDBUseCase
         self.nextFeature = nextFeature
-        self.coreDataStore =  coreDataStore
     }
     
     func goToDetailPost(navigationController: UINavigationController, post: Post) {
@@ -58,6 +60,7 @@ extension PostListViewModel {
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.alert = true
                     break
                 }
             }, receiveValue: { [weak self] items in
@@ -115,6 +118,15 @@ extension PostListViewModel {
             })
             .store(in: &cancellables)
         
+    }
+    
+    func deletePost(post: Post) {
+        deletePostDBUseCase.execute(value: post)
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [weak self] success in
+                self?.fetchPostFromStored()
+            })
+            .store(in: &cancellables)
     }
     
     func updatePost(post: PostDB) {

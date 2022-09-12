@@ -30,7 +30,7 @@ class DetailPostViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupBindings()
-        viewModel.fetchPostFromStored()
+        viewModel.fetchCommentsFromStored()
     }
     
     private func setupBindings() {
@@ -40,6 +40,21 @@ class DetailPostViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+        
+        viewModel.$alert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                if state {
+                    self?.showAlert()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Problem loading data", message: "Check Internet", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

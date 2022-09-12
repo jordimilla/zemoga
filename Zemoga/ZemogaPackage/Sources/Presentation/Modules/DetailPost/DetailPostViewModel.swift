@@ -9,19 +9,24 @@ final class DetailPostViewModel {
     let navigationController: UINavigationController
     let post: Post
     private let getDetailPostUseCase: GetDetailPostUseCase
-    private let coreDataStore: CoreDataStoring
+    private let fetchCommentsFromStoredUseCase: FetchCommentsFromStoredUseCase
+    private let createCommentDBEntitiesUseCase: CreateCommentDBEntitiesUseCase
     private var cancellables = Set<AnyCancellable>()
+    
     @Published private(set) var comments: [Comment] = []
+    @Published private(set) var alert: Bool = false
     
 
     init(navigationController: UINavigationController,
          post: Post,
          getDetailPostUseCase: GetDetailPostUseCase,
-         coreDataStore: CoreDataStoring) {
+         fetchCommentsFromStoredUseCase: FetchCommentsFromStoredUseCase,
+         createCommentDBEntitiesUseCase: CreateCommentDBEntitiesUseCase) {
         self.navigationController = navigationController
         self.post = post
         self.getDetailPostUseCase = getDetailPostUseCase
-        self.coreDataStore = coreDataStore
+        self.fetchCommentsFromStoredUseCase = fetchCommentsFromStoredUseCase
+        self.createCommentDBEntitiesUseCase = createCommentDBEntitiesUseCase
     }
     
     func getDetailPost() {
@@ -32,50 +37,31 @@ final class DetailPostViewModel {
                     break
                 case .failure(let error):
                     print(error.localizedDescription)
+                    self.alert = true
                     break
                 }
             }, receiveValue: { [weak self] items in
                 self?.comments = items
-                self?.createEntity()
+                self?.createEntity(comments: items)
             })
             .store(in: &cancellables)
     }
     
-    func createEntity() {
-        let action: Action = {
-            for comment in self.comments {
-                let c: CommentDB = self.coreDataStore.createEntity()
-                c.id = Int32(comment.id)
-                c.postId = Int32(comment.postId)
-                c.name = comment.name
-                c.email = comment.email
-                c.body = comment.body
-            }
-        }
-        
-        coreDataStore
-            .publicher(save: action)
-            .sink { completion in
-            } receiveValue: { success in
-            }
-            .store(in: &cancellables)
+    func createEntity(comments: [Comment]) {
+        createCommentDBEntitiesUseCase.execute(value: comments)
     }
     
-    func fetchPostFromStored() {
-        let request = NSFetchRequest<CommentDB>(entityName: CommentDB.entityName)
-        request.predicate = NSPredicate(format: "postId == %@", NSNumber(value: post.id))
-        coreDataStore
-            .publicher(fetch: request)
-            .sink { completion in
-            } receiveValue: { items in
+    func fetchCommentsFromStored() {
+        fetchCommentsFromStoredUseCase.execute(value: (post))
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [weak self] items in
                 if items.count == 0 {
-                    self.getDetailPost()
+                    self?.getDetailPost()
                 } else {
                     let comments = CommentDB.mapComments(input: items)
-                    self.comments = comments
+                    self?.comments = comments
                 }
-                
-            }
+            })
             .store(in: &cancellables)
     }
 

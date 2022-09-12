@@ -15,7 +15,8 @@ public class AppAssembly {
         let createPostDBEntitiesUseCase = CreatePostDBEntitiesUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
         let deleteAllPostDBUseCase =  DeleteAllPostDBUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
         let deleteAllCommentDBUseCase =  DeleteAllCommentDBUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
-        let deleteAllPostHasNotFavoriteUseCase =  DeleteAllPostHasNotFavoriteUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
+        let deleteAllPostHasNotFavoriteUseCase = DeleteAllPostHasNotFavoriteUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
+        let deletePostDBUseCase = DeletePostDBUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
         
         return PostListAssembly(fetchPostListUseCase: fetchPostListUseCase,
                                 getPostDBUseCase: getPostDBUseCase,
@@ -25,18 +26,20 @@ public class AppAssembly {
                                 deleteAllPostDBUseCase: deleteAllPostDBUseCase,
                                 deleteAllCommentDBUseCase: deleteAllCommentDBUseCase,
                                 deleteAllPostHasNotFavoriteUseCase: deleteAllPostHasNotFavoriteUseCase,
-                                nextFeature: detailPostFeature,
-                                coreDataStore: coreDataStoring).build()
+                                deletePostDBUseCase: deletePostDBUseCase,
+                                nextFeature: detailPostFeature).build()
     }
     
     public static let detailPostFeature: SingleParamFeatureProvider<Post>  = { navigationController, post in
         
         let getDetailPostUseCase = GetDetailPostUseCase(repository: ServiceRepositoryAssembly.makeServiceRepository())
-        let coreDataStoring = CoreDataStore.default
+        let fetchCommentsFromStoredUseCase = FetchCommentsFromStoredUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
+        let createCommentDBEntitiesUseCase = CreateCommentDBEntitiesUseCase(coreDataRepository: ServiceRepositoryAssembly.makeCoreDataRepository())
         
         return DetailPostAssembly(navigationController: navigationController,
                                   post: post,
                                   getDetailPostUseCase: getDetailPostUseCase,
-                                  coreDataStore: coreDataStoring).build()
+        fetchCommentsFromStoredUseCase: fetchCommentsFromStoredUseCase,
+        createCommentDBEntitiesUseCase: createCommentDBEntitiesUseCase).build()
     }
 }

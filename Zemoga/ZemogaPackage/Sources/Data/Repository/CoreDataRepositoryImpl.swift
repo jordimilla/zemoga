@@ -55,11 +55,35 @@ public struct CoreDataRepositoryImpl: CoreDataRepository {
     }
     
     public func createCommentDBEntities(comments: [Comment]) {
-       // var cancellables = Set<AnyCancellable>()
+        var cancellables = Set<AnyCancellable>()
+        let action: Action = {
+            for comment in comments {
+                let c: CommentDB = self.coreDataStore.createEntity()
+                c.id = Int32(comment.id)
+                c.postId = Int32(comment.postId)
+                c.name = comment.name
+                c.email = comment.email
+                c.body = comment.body
+            }
+        }
+        
+        coreDataStore
+            .publicher(save: action)
+            .sink { completion in
+            } receiveValue: { success in
+            }
+            .store(in: &cancellables)
     }
     
-    public func fetchCommentsFromStored() {
-        //var cancellables = Set<AnyCancellable>()
+    public func fetchCommentsFromStored(post: Post) -> AnyPublisher<[CommentDB], Error>{
+        let request = NSFetchRequest<CommentDB>(entityName: CommentDB.entityName)
+        request.predicate = NSPredicate(format: "postId == %@", NSNumber(value: post.id))
+        return coreDataStore
+            .publicher(fetch: request)
+            .tryMap { items in
+                return items
+            }
+            .eraseToAnyPublisher()
     }
     
     public func fetchPostFromStored() -> AnyPublisher<[PostDB], Error> {
@@ -75,6 +99,17 @@ public struct CoreDataRepositoryImpl: CoreDataRepository {
     public func deleteAllPostHasNotFavorite() -> AnyPublisher<NSBatchDeleteResult, Error> {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
         request.predicate = NSPredicate(format: "hasFavorite == %@", NSNumber(value: false))
+        return coreDataStore
+            .publicher(delete: request)
+            .tryMap { success in
+                return success
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    public func deletePost(post: Post) -> AnyPublisher<NSBatchDeleteResult, Error> {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
+        request.predicate = NSPredicate(format: "id == %@", NSNumber(value: post.id))
         return coreDataStore
             .publicher(delete: request)
             .tryMap { success in

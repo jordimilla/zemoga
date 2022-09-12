@@ -65,9 +65,9 @@ public final class DetailPostTableViewCell: UITableViewCell {
     }
     
     func setup(title: String, email: String, body: String) {
-        titleLabel.text = title
-        emailLabel.text = email
-        bodyLabel.text = body
+        titleLabel.text = "Name: \(title)"
+        emailLabel.text = "Email: \(email)"
+        bodyLabel.text = "Message: \(body)"
     }
 }
 

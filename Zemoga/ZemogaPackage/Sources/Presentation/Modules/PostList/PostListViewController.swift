@@ -43,11 +43,26 @@ class PostListViewController: UIViewController {
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
+        
+        viewModel.$alert
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] state in
+                if state {
+                    self?.showAlert()
+                }
+            }
+            .store(in: &cancellables)
     }
     
-    func sortList() {
+    private func sortList() {
         self.posts.sort { $0.hasFavorite ?? true && !($1.hasFavorite ?? false) }
         tableView.reloadData()
+    }
+    
+    private func showAlert() {
+        let alert = UIAlertController(title: "Problem loading data", message: "Check Internet", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -68,8 +83,13 @@ extension PostListViewController: UITableViewDataSource {
             viewModel.setFavoritePost(id: post.id)
             sortList()
         })
+        cell.setDeleteCallback(callback: { [unowned self] in
+            viewModel.deletePost(post: post)
+        })
         return cell
     }
+    
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -86,15 +106,14 @@ extension PostListViewController: UITableViewDelegate {
 
 extension PostListViewController {
     public func setupViews() {
-        title = "Posts"
         view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
         tableView.allowsMultipleSelectionDuringEditing = false
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.indentifier)
         
-        let add = UIBarButtonItem(title: "API", style: .plain, target: self, action: #selector(apiTapped))
-        let play = UIBarButtonItem(title: "Remove", style: .plain, target: self, action: #selector(removeTapped))
+        let add = UIBarButtonItem(title: "Load API", style: .plain, target: self, action: #selector(apiTapped))
+        let play = UIBarButtonItem(title: "Remove all except Favorite", style: .plain, target: self, action: #selector(removeTapped))
 
         navigationItem.rightBarButtonItems = [add, play]
     }
