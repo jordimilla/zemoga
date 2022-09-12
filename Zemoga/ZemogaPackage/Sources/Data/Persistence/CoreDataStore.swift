@@ -7,7 +7,7 @@ public class CoreDataStore: CoreDataStoring {
     private let container: NSPersistentContainer
     
     public static var `default`: CoreDataStoring = {
-        return CoreDataStore(name: "CoreDataExample", in: .persistent)
+        return CoreDataStore(name: "Zemoga", in: .persistent)
     }()
     
     public var viewContext: NSManagedObjectContext {

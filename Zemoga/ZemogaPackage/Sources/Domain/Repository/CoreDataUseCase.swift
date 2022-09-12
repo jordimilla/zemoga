@@ -1,7 +1,7 @@
 import Foundation
 
 protocol CoreDataUseCase {
-    var coreData: CoreDataRepository { get }
+    var coreDataRepository: CoreDataRepository { get }
     
-    init(coreData: CoreDataRepository)
+    init(coreDataRepository: CoreDataRepository)
 }

@@ -7,6 +7,13 @@ import CoreData
 final class PostListViewModel {
     
     private let fetchPostListUseCase: FetchPostsListUseCase
+    private let getPostDBUseCase: GetPostDBUseCase
+    private let updateFavoritePostUseCase: UpdateFavoritePostUseCase
+    private let fetchPostFromStoredUseCase: FetchPostFromStoredUseCase
+    private let createPostDBEntitiesUseCase: CreatePostDBEntitiesUseCase
+    private let deleteAllPostDBUseCase: DeleteAllPostDBUseCase
+    private let deleteAllPostHasNotFavoriteUseCase: DeleteAllPostHasNotFavoriteUseCase
+    private let deleteAllCommentDBUseCase: DeleteAllCommentDBUseCase
     private let nextFeature: SingleParamFeatureProvider<Post>
     private let coreDataStore: CoreDataStoring
     
@@ -14,13 +21,35 @@ final class PostListViewModel {
     @Published private(set) var posts: [Post] = []
     
     init(fetchPostListUseCase: FetchPostsListUseCase,
+         getPostDBUseCase: GetPostDBUseCase,
+         updateFavoritePostUseCase: UpdateFavoritePostUseCase,
+         fetchPostFromStoredUseCase: FetchPostFromStoredUseCase,
+         createPostDBEntitiesUseCase: CreatePostDBEntitiesUseCase,
+         deleteAllPostDBUseCase: DeleteAllPostDBUseCase,
+         deleteAllPostHasNotFavoriteUseCase: DeleteAllPostHasNotFavoriteUseCase,
+         deleteAllCommentDBUseCase: DeleteAllCommentDBUseCase,
          nextFeature: @escaping SingleParamFeatureProvider<Post>,
          coreDataStore: CoreDataStoring) {
         self.fetchPostListUseCase = fetchPostListUseCase
+        self.getPostDBUseCase = getPostDBUseCase
+        self.updateFavoritePostUseCase = updateFavoritePostUseCase
+        self.fetchPostFromStoredUseCase = fetchPostFromStoredUseCase
+        self.createPostDBEntitiesUseCase = createPostDBEntitiesUseCase
+        self.deleteAllPostDBUseCase = deleteAllPostDBUseCase
+        self.deleteAllPostHasNotFavoriteUseCase = deleteAllPostHasNotFavoriteUseCase
+        self.deleteAllCommentDBUseCase = deleteAllCommentDBUseCase
         self.nextFeature = nextFeature
         self.coreDataStore =  coreDataStore
     }
     
+    func goToDetailPost(navigationController: UINavigationController, post: Post) {
+        let viewController = nextFeature(navigationController, post)
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+// MARK: - API
+extension PostListViewModel {
     func fetchPosts() {
         fetchPostListUseCase.execute(value: ())
             .sink(receiveCompletion: { completion in
@@ -35,108 +64,66 @@ final class PostListViewModel {
                 self?.posts = items
                 self?.deleteAllPost()
                 self?.deleteAllComments()
-                self?.createEntity()
+                self?.createEntity(posts: items)
+            })
+            .store(in: &cancellables)
+    }
+}
+
+// MARK: - CoreData
+extension PostListViewModel {
+    func createEntity(posts: [Post]) {
+        createPostDBEntitiesUseCase.execute(value: posts)
+    }
+    
+    func fetchPostFromStored() {
+        fetchPostFromStoredUseCase.execute(value: ())
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [weak self] items in
+                if items.count == 0 {
+                    self?.fetchPosts()
+                } else {
+                    let posts = PostDB.mapPosts(input: items)
+                    self?.posts = posts
+                }
             })
             .store(in: &cancellables)
     }
     
-    func goToDetailPost(navigationController: UINavigationController, post: Post) {
-        let viewController = nextFeature(navigationController, post)
-        navigationController.pushViewController(viewController, animated: true)
-    }
-    
-    func createEntity() {
-        let action: Action = {
-            for post in self.posts {
-                let p: PostDB = self.coreDataStore.createEntity()
-                p.id = Int32(post.id)
-                p.userId = Int32(post.userId)
-                p.title = post.title
-                p.body = post.body
-                p.hasFavorite = post.hasFavorite ?? false
-            }
-        }
-        
-        coreDataStore
-            .publicher(save: action)
-            .sink { completion in
-            } receiveValue: { success in
-            }
-            .store(in: &cancellables)
-    }
-    
-    func fetchPostFromStored() {
-        let request = NSFetchRequest<PostDB>(entityName: PostDB.entityName)
-        coreDataStore
-            .publicher(fetch: request)
-            .sink { completion in
-            } receiveValue: { items in
-                if items.count == 0 {
-                    self.fetchPosts()
-                } else {
-                    let posts = PostDB.mapPosts(input: items)
-                    self.posts = posts
-                }
-                
-            }
-            .store(in: &cancellables)
-    }
-    
     func deleteAllPost() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
-        coreDataStore
-            .publicher(delete: request)
-            .sink { completion in
-            } receiveValue: { success in
-            }
-            .store(in: &cancellables)
+        deleteAllPostDBUseCase.execute()
     }
     
     func deleteAllComments() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: CommentDB.entityName)
-        coreDataStore
-            .publicher(delete: request)
-            .sink { completion in
-            } receiveValue: { success in
-            }
-            .store(in: &cancellables)
+        deleteAllCommentDBUseCase.execute()
     }
     
     func deleteAllPostHasNotFavorite() {
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
-        request.predicate = NSPredicate(format: "hasFavorite == %@", NSNumber(value: false))
-        coreDataStore
-            .publicher(delete: request)
-            .sink { completion in
-            } receiveValue: { items in
-                self.fetchPostFromStored()
-            }
+        deleteAllPostHasNotFavoriteUseCase.execute(value: ())
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [weak self] success in
+                self?.fetchPostFromStored()
+            })
             .store(in: &cancellables)
     }
     
-    func setFavoritePost(id: Int, hasFavorite: Bool) {
-        
-        let request = NSFetchRequest<PostDB>(entityName: PostDB.entityName)
-        request.predicate = NSPredicate(format: "id == %@", NSNumber(value: id))
-        coreDataStore
-            .publicher(fetch: request)
-            .sink { completion in
-            } receiveValue: { item in
-                guard let p: PostDB = item.first else { return }
-                let action : Action = {
-                    p.setValue(hasFavorite, forKey: "hasFavorite")
-                }
-                self.coreDataStore
-                    .publicher(save: action)
-                    .sink { completion in
-                    } receiveValue: { success in
-                        self.fetchPostFromStored()
-                    }
-                    .store(in: &self.cancellables)
-                
-            }
+    func setFavoritePost(id: Int) {
+        getPostDBUseCase.execute(value: id)
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [weak self] item in
+                self?.updatePost(post: item)
+            })
             .store(in: &cancellables)
         
     }
+    
+    func updatePost(post: PostDB) {
+        updateFavoritePostUseCase.execute(value: post)
+            .sink(receiveCompletion: { completion in
+            }, receiveValue: { [weak self] success in
+                print(success)
+                self?.fetchPostFromStored()
+            })
+            .store(in: &cancellables)
+    }
 }
-

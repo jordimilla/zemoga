@@ -65,7 +65,7 @@ extension PostListViewController: UITableViewDataSource {
         let post:Post = posts[indexPath.row]
         cell.setup(title: post.title, hasFavorite: post.hasFavorite ?? false)
         cell.setCallback(callback: {[unowned self] (boolValue:Bool) in
-            viewModel.setFavoritePost(id: post.id, hasFavorite: boolValue)
+            viewModel.setFavoritePost(id: post.id)
             sortList()
         })
         return cell

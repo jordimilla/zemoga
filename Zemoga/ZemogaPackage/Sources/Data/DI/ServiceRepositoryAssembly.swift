@@ -8,4 +8,11 @@ public class ServiceRepositoryAssembly {
         
         return repository
     }
+    
+    public static func makeCoreDataRepository() -> CoreDataRepository {
+        let coreDataStoring = CoreDataStore.default
+        let repository = CoreDataRepositoryImpl(coreDataStore: coreDataStoring)
+        
+        return repository
+    }
 }
