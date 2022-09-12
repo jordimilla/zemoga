@@ -37,7 +37,11 @@ extension PostDB {
     
     static public func mapPosts(input: [PostDB]) -> [Post] {
         return input.map { post -> Post in
-            Post(userId: Int(post.userId), id: Int(post.id), title: post.title, body: post.body, hasFavorite: post.hasFavorite)
+            Post(userId: Int(post.userId),
+                 id: Int(post.id),
+                 title: post.title,
+                 body: post.body,
+                 hasFavorite: post.hasFavorite)
         }
     }
 }

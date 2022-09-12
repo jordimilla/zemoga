@@ -5,15 +5,18 @@ import UIKit
 public class DetailPostAssembly {
     
     private let navigationController: UINavigationController
-    private let idPost: Int
+    private let post: Post
     private let getDetailPostUseCase: GetDetailPostUseCase
+    private let coreDataStore: CoreDataStoring
     
     public init(navigationController: UINavigationController,
-                idPost: Int,
-                getDetailPostUseCase: GetDetailPostUseCase) {
+                post: Post,
+                getDetailPostUseCase: GetDetailPostUseCase,
+                coreDataStore: CoreDataStoring) {
         self.navigationController = navigationController
-        self.idPost = idPost
+        self.post = post
         self.getDetailPostUseCase = getDetailPostUseCase
+        self.coreDataStore = coreDataStore
     }
     
     public func build() -> UIViewController {
@@ -25,8 +28,9 @@ extension DetailPostAssembly {
     
     private func makeViewModel() -> DetailPostViewModel {
        DetailPostViewModel(navigationController: navigationController,
-                           idPost: idPost,
-                           getDetailPostUseCase: getDetailPostUseCase)
+                           post: post,
+                           getDetailPostUseCase: getDetailPostUseCase,
+                           coreDataStore: coreDataStore)
     }
 }
 

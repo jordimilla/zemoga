@@ -30,7 +30,7 @@ class DetailPostViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupBindings()
-        viewModel.getDetailPost(id: viewModel.idPost)
+        viewModel.fetchPostFromStored()
     }
     
     private func setupBindings() {

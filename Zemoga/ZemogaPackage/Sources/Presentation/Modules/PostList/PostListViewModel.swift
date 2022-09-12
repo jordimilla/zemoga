@@ -7,16 +7,18 @@ import CoreData
 final class PostListViewModel {
     
     private let fetchPostListUseCase: FetchPostsListUseCase
-    private let nextFeature: SingleParamFeatureProvider<Int>
+    private let nextFeature: SingleParamFeatureProvider<Post>
+    private let coreDataStore: CoreDataStoring
     
     private var cancellables = Set<AnyCancellable>()
-    let coreDataStore = CoreDataStore.default
     @Published private(set) var posts: [Post] = []
     
     init(fetchPostListUseCase: FetchPostsListUseCase,
-         nextFeature: @escaping SingleParamFeatureProvider<Int>) {
+         nextFeature: @escaping SingleParamFeatureProvider<Post>,
+         coreDataStore: CoreDataStoring) {
         self.fetchPostListUseCase = fetchPostListUseCase
         self.nextFeature = nextFeature
+        self.coreDataStore =  coreDataStore
     }
     
     func fetchPosts() {
@@ -32,13 +34,14 @@ final class PostListViewModel {
             }, receiveValue: { [weak self] items in
                 self?.posts = items
                 self?.deleteAllPost()
+                self?.deleteAllComments()
                 self?.createEntity()
             })
             .store(in: &cancellables)
     }
     
-    func goToDetailPost(navigationController: UINavigationController, idPost: Int) {
-        let viewController = nextFeature(navigationController, idPost)
+    func goToDetailPost(navigationController: UINavigationController, post: Post) {
+        let viewController = nextFeature(navigationController, post)
         navigationController.pushViewController(viewController, animated: true)
     }
     
@@ -81,6 +84,16 @@ final class PostListViewModel {
     
     func deleteAllPost() {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
+        coreDataStore
+            .publicher(delete: request)
+            .sink { completion in
+            } receiveValue: { success in
+            }
+            .store(in: &cancellables)
+    }
+    
+    func deleteAllComments() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: CommentDB.entityName)
         coreDataStore
             .publicher(delete: request)
             .sink { completion in

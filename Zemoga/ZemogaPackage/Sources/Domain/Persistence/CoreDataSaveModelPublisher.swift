@@ -1,21 +1,21 @@
 import Combine
 import CoreData
 
-typealias Action = (()->())
+public typealias Action = (()->())
 
-struct CoreDataSaveModelPublisher: Publisher {
-    typealias Output = Bool
-    typealias Failure = NSError
+public struct CoreDataSaveModelPublisher: Publisher {
+    public typealias Output = Bool
+    public typealias Failure = NSError
     
     private let action: Action
     private let context: NSManagedObjectContext
     
-    init(action: @escaping Action, context: NSManagedObjectContext) {
+    public init(action: @escaping Action, context: NSManagedObjectContext) {
         self.action = action
         self.context = context
     }
     
-    func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+    public func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = Subscription(subscriber: subscriber, context: context, action: action)
         subscriber.receive(subscription: subscription)
     }

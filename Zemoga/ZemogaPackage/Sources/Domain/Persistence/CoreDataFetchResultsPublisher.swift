@@ -1,9 +1,9 @@
 import Combine
 import CoreData
 
-struct CoreDataFetchResultsPublisher<Entity>: Publisher where Entity: NSManagedObject {
-    typealias Output = [Entity]
-    typealias Failure = NSError
+public struct CoreDataFetchResultsPublisher<Entity>: Publisher where Entity: NSManagedObject {
+    public typealias Output = [Entity]
+    public typealias Failure = NSError
     
     private let request: NSFetchRequest<Entity>
     private let context: NSManagedObjectContext
@@ -13,7 +13,7 @@ struct CoreDataFetchResultsPublisher<Entity>: Publisher where Entity: NSManagedO
         self.context = context
     }
     
-    func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
+    public func receive<S>(subscriber: S) where S : Subscriber, Self.Failure == S.Failure, Self.Output == S.Input {
         let subscription = Subscription(subscriber: subscriber, context: context, request: request)
         subscriber.receive(subscription: subscription)
     }

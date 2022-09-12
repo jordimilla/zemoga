@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CommentDB" representedClassName="CommentDB" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="String"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="postId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="PostDB" representedClassName="PostDB" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String"/>
         <attribute name="hasFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -9,5 +16,6 @@
     </entity>
     <elements>
         <element name="PostDB" positionX="-36" positionY="27" width="128" height="104"/>
+        <element name="CommentDB" positionX="-27" positionY="72" width="128" height="104"/>
     </elements>
 </model>

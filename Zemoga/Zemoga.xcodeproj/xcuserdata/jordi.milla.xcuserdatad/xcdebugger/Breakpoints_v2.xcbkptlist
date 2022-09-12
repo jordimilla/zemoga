@@ -7,48 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0367F1C0-5CD0-4ABA-948A-EB833DDFD2A8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "4F6F5DDD-A53A-4379-A0D8-EBE5942B2C7E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2599A81A-A028-4A7E-BC60-3F80B4A38300"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "1E77983F-61D4-4A64-AD9B-E94A5458FD89"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -56,8 +14,8 @@
             filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "setFavoritePost(id:hasFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -72,8 +30,8 @@
             filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "setFavoritePost(id:hasFavorite:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -81,11 +39,27 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "027BB5E8-4B88-4ECD-8288-8696420ADEB2"
+            uuid = "BF330643-BA65-41F9-8BFB-815C1B0A2B66"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+            filePath = "ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "getDetailPost()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB6DE8A8-1532-4887-B4A9-89BFC2976EFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ZemogaPackage/Sources/Presentation/Modules/DetailPost/DetailPostViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
@@ -97,80 +71,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "87F676E5-994E-4465-A364-51D0EB13E14C"
+            uuid = "4F5A9FD1-D072-4F85-9521-D4CA8651EBEA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/Cell/PostTableViewCell.swift"
+            filePath = "Zemoga/DI/CoreDataStore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "setup(title:hasFavorite:)"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "init(name:in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AE21D0A2-1EDD-4DA2-9CB9-C7086EDBC539"
+            uuid = "91A1C1DE-D608-4106-9337-682189634151"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+            filePath = "Zemoga/DI/CoreDataStore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "fetchPostFromStored()"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "init(name:in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B33DBA88-96F0-4866-971F-0CEEFFAB3222"
+            uuid = "CBE894AB-5F39-4A26-AA9A-A49C17552E16"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
+            filePath = "Zemoga/DI/CoreDataStore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "createEntity()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "422937B3-3074-4773-A082-C1EA0B206475"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "fetchPostFromStored()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F0AA0DD7-059B-4A5F-9DF0-DA720853B5BD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ZemogaPackage/Sources/Presentation/Modules/PostList/PostListViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "createEntity()"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "init(name:in:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
