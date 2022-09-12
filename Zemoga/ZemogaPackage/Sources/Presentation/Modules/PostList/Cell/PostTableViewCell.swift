@@ -14,7 +14,7 @@ public final class PostTableViewCell: UITableViewCell {
         return label
     }()
     
-    var hasFavorite: Bool = false
+    var hasFavorite: Bool?
     var valueFavoriteChanged:((Bool) -> Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,9 +28,9 @@ public final class PostTableViewCell: UITableViewCell {
     }
     
     @objc private func handleMarkAsFavorite() {
-        self.hasFavorite = !self.hasFavorite
-        setStar(hasFavorite: self.hasFavorite)
-        valueFavoriteChanged?(self.hasFavorite)
+        self.hasFavorite = !(self.hasFavorite ?? false)
+        setStar(hasFavorite: self.hasFavorite ?? false)
+        valueFavoriteChanged?(self.hasFavorite ?? false)
     }
     
     private func setupContraints() {
@@ -48,7 +48,7 @@ public final class PostTableViewCell: UITableViewCell {
     func setup(title: String, hasFavorite: Bool) {
         self.hasFavorite = hasFavorite
         titleLabel.text = title
-        setStar(hasFavorite: self.hasFavorite)
+        setStar(hasFavorite: self.hasFavorite ?? false)
     }
     
     func setCallback(callback:@escaping (Bool) -> Void) {

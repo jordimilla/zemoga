@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A3DC7A128CF2F4C00653677 /* CoreDataExample.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A3DC79F28CF2F4C00653677 /* CoreDataExample.xcdatamodeld */; };
 		9A5AF0D328CB8E75009EF7E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D228CB8E75009EF7E3 /* AppDelegate.swift */; };
 		9A5AF0D528CB8E75009EF7E3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D428CB8E75009EF7E3 /* SceneDelegate.swift */; };
 		9A5AF0D728CB8E75009EF7E3 /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5AF0D628CB8E75009EF7E3 /* AppAssembly.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9A3DC7A028CF2F4C00653677 /* CoreDataExample.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataExample.xcdatamodel; sourceTree = "<group>"; };
 		9A5AF0CF28CB8E75009EF7E3 /* Zemoga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zemoga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A5AF0D228CB8E75009EF7E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A5AF0D428CB8E75009EF7E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				9A5AF0D628CB8E75009EF7E3 /* AppAssembly.swift */,
 				9A5AF0DE28CB8E76009EF7E3 /* Assets.xcassets */,
 				9A5AF0E028CB8E76009EF7E3 /* LaunchScreen.storyboard */,
+				9A3DC79F28CF2F4C00653677 /* CoreDataExample.xcdatamodeld */,
 				9A5AF0E328CB8E76009EF7E3 /* Info.plist */,
 			);
 			path = Zemoga;
@@ -278,6 +281,7 @@
 				9A5AF0D728CB8E75009EF7E3 /* AppAssembly.swift in Sources */,
 				9A5AF0D328CB8E75009EF7E3 /* AppDelegate.swift in Sources */,
 				9A5AF0D528CB8E75009EF7E3 /* SceneDelegate.swift in Sources */,
+				9A3DC7A128CF2F4C00653677 /* CoreDataExample.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zemoga/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -474,6 +479,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Zemoga/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -620,6 +626,19 @@
 			productName = Presentation;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		9A3DC79F28CF2F4C00653677 /* CoreDataExample.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9A3DC7A028CF2F4C00653677 /* CoreDataExample.xcdatamodel */,
+			);
+			currentVersion = 9A3DC7A028CF2F4C00653677 /* CoreDataExample.xcdatamodel */;
+			path = CoreDataExample.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9A5AF0C728CB8E75009EF7E3 /* Project object */;
 }

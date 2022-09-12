@@ -31,12 +31,7 @@ class PostListViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupBindings()
-        if !viewModel.hasDB() {
-            viewModel.fetchPosts()
-        } else {
-            viewModel.getPosts()
-        }
-    
+        viewModel.fetchPostFromStored()
     }
     
     private func setupBindings() {
@@ -44,13 +39,13 @@ class PostListViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
                 self?.posts = items
-                self?.filterList()
+                self?.sortList()
                 self?.tableView.reloadData()
             }
             .store(in: &cancellables)
     }
     
-    func filterList() {
+    func sortList() {
         self.posts.sort { $0.hasFavorite ?? true && !($1.hasFavorite ?? false) }
         tableView.reloadData()
     }
@@ -70,8 +65,8 @@ extension PostListViewController: UITableViewDataSource {
         let post:Post = posts[indexPath.row]
         cell.setup(title: post.title, hasFavorite: post.hasFavorite ?? false)
         cell.setCallback(callback: {[unowned self] (boolValue:Bool) in
-            self.posts[indexPath.row].hasFavorite = boolValue
-            viewModel.savePosts(posts: self.posts)
+            viewModel.setFavoritePost(id: post.id, hasFavorite: boolValue)
+            sortList()
         })
         return cell
     }
@@ -115,21 +110,10 @@ extension PostListViewController {
     }
     
     @objc private func removeTapped() {
-        let newArray = self.posts.filter({ $0.hasFavorite == true })
-        viewModel.savePosts(posts: newArray)
+        viewModel.deleteAllPostHasNotFavorite()
     }
     
     @objc private func apiTapped() {
         viewModel.fetchPosts()
-    }
-}
-extension Array where Element: Equatable {
-    @discardableResult
-    public mutating func replace(_ element: Element, with new: Element) -> Bool {
-        if let f = self.firstIndex(where: { $0 == element}) {
-            self[f] = new
-            return true
-        }
-        return false
     }
 }

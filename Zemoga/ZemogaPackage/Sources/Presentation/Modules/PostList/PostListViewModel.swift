@@ -2,6 +2,7 @@ import Foundation
 import Domain
 import UIKit
 import Combine
+import CoreData
 
 final class PostListViewModel {
     
@@ -9,6 +10,7 @@ final class PostListViewModel {
     private let nextFeature: SingleParamFeatureProvider<Int>
     
     private var cancellables = Set<AnyCancellable>()
+    let coreDataStore = CoreDataStore.default
     @Published private(set) var posts: [Post] = []
     
     init(fetchPostListUseCase: FetchPostsListUseCase,
@@ -29,7 +31,8 @@ final class PostListViewModel {
                 }
             }, receiveValue: { [weak self] items in
                 self?.posts = items
-                self?.savePosts(posts: items)
+                self?.deleteAllPost()
+                self?.createEntity()
             })
             .store(in: &cancellables)
     }
@@ -39,29 +42,88 @@ final class PostListViewModel {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func savePosts(posts: [Post]) {
-        self.posts = posts
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(self.posts), forKey:"posts")
-    }
-    
-    func hasDB() -> Bool {
-        return UserDefaults.standard.object(forKey: "posts") != nil
-    }
-    
-    func getPosts(){
-        if let data = UserDefaults.standard.value(forKey:"posts") as? Data {
-            guard let decodedSports = try? PropertyListDecoder().decode([Post].self, from: data) else { return }
-            self.posts = decodedSports
+    func createEntity() {
+        let action: Action = {
+            for post in self.posts {
+                let p: PostDB = self.coreDataStore.createEntity()
+                p.id = Int32(post.id)
+                p.userId = Int32(post.userId)
+                p.title = post.title
+                p.body = post.body
+                p.hasFavorite = post.hasFavorite ?? false
+            }
         }
+        
+        coreDataStore
+            .publicher(save: action)
+            .sink { completion in
+            } receiveValue: { success in
+            }
+            .store(in: &cancellables)
     }
     
-    func removePosts() {
-        UserDefaults.standard.removeObject(forKey: "posts")
+    func fetchPostFromStored() {
+        let request = NSFetchRequest<PostDB>(entityName: PostDB.entityName)
+        coreDataStore
+            .publicher(fetch: request)
+            .sink { completion in
+            } receiveValue: { items in
+                if items.count == 0 {
+                    self.fetchPosts()
+                } else {
+                    let posts = PostDB.mapPosts(input: items)
+                    self.posts = posts
+                }
+                
+            }
+            .store(in: &cancellables)
     }
     
-    func deletePost(index: Int) {
-        self.posts.remove(at: index)
-        savePosts(posts: self.posts)
+    func deleteAllPost() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
+        coreDataStore
+            .publicher(delete: request)
+            .sink { completion in
+            } receiveValue: { success in
+            }
+            .store(in: &cancellables)
+    }
+    
+    func deleteAllPostHasNotFavorite() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: PostDB.entityName)
+        request.predicate = NSPredicate(format: "hasFavorite == %@", NSNumber(value: false))
+        coreDataStore
+            .publicher(delete: request)
+            .sink { completion in
+            } receiveValue: { items in
+                self.fetchPostFromStored()
+            }
+            .store(in: &cancellables)
+    }
+    
+    func setFavoritePost(id: Int, hasFavorite: Bool) {
+        
+        let request = NSFetchRequest<PostDB>(entityName: PostDB.entityName)
+        request.predicate = NSPredicate(format: "id == %@", NSNumber(value: id))
+        coreDataStore
+            .publicher(fetch: request)
+            .sink { completion in
+            } receiveValue: { item in
+                guard let p: PostDB = item.first else { return }
+                let action : Action = {
+                    p.setValue(hasFavorite, forKey: "hasFavorite")
+                }
+                self.coreDataStore
+                    .publicher(save: action)
+                    .sink { completion in
+                    } receiveValue: { success in
+                        self.fetchPostFromStored()
+                    }
+                    .store(in: &self.cancellables)
+                
+            }
+            .store(in: &cancellables)
+        
     }
 }
 
