@@ -24,9 +24,9 @@ I have not wanted to use any third-party library.
 
 
 # Improvements
-
+- Create an API manager to handle all requests (get,post,put...) and urls
 - UI: I have focused on the architecture part and not on the visual
-- Finish the unit tests I have done a few in each layer.
+- Finish unit tests. I have done some unit tests in each layer so you can see how the tests would look
 - Maybe use an object for Data and some mappers inside it to send to Domain
 - Use some kind of generic for all use cases
 
